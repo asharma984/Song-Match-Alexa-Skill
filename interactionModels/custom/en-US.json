@@ -1,0 +1,328 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "song match",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "RecommendSongIntent",
+          "slots": [
+            {
+              "name": "artist",
+              "type": "artist",
+              "samples": [
+                "{artist}",
+                "I prefer listening to {artist}",
+                "I like {artist}"
+              ]
+            },
+            {
+              "name": "colour",
+              "type": "colour",
+              "samples": [
+                "{colour}",
+                "I like {colour}",
+                "I prefer {colour}"
+              ]
+            },
+            {
+              "name": "flavour",
+              "type": "flavour",
+              "samples": [
+                "{flavour}",
+                "I prefer {flavour}",
+                "I like {flavour}"
+              ]
+            },
+            {
+              "name": "weather",
+              "type": "weather",
+              "samples": [
+                "{weather}",
+                "I prefer {weather} ",
+                "I like {weather}"
+              ]
+            }
+          ],
+          "samples": [
+            "{artist}",
+            "My favorite artist is {artist}",
+            "I prefer {artist}",
+            "I like {artist}",
+            "Recommend me a song",
+            "Open song match"
+          ]
+        },
+        {
+          "name": "YesIntent",
+          "slots": [],
+          "samples": [
+            "sure",
+            "yup",
+            "Yes"
+          ]
+        },
+        {
+          "name": "NoIntent",
+          "slots": [],
+          "samples": [
+            "Nope",
+            "No"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "justin bieber"
+              }
+            },
+            {
+              "name": {
+                "value": "eminem"
+              }
+            },
+            {
+              "name": {
+                "value": "ariana grande"
+              }
+            },
+            {
+              "name": {
+                "value": "alan walker"
+              }
+            }
+          ],
+          "name": "artist"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "white"
+              }
+            },
+            {
+              "name": {
+                "value": "black"
+              }
+            }
+          ],
+          "name": "colour"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "vanilla"
+              }
+            },
+            {
+              "name": {
+                "value": "chocolate"
+              }
+            }
+          ],
+          "name": "flavour"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "winter"
+              }
+            },
+            {
+              "name": {
+                "value": "summer"
+              }
+            }
+          ],
+          "name": "weather"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "RecommendSongIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "artist",
+              "type": "artist",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1332070235665.1047502819992"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1332070235665.1047502819992.335261062784",
+                  "values": [
+                    "justin bieber",
+                    "ariana grande",
+                    "alan walker",
+                    "eminem"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "colour",
+              "type": "colour",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1332070235665.1049695556749"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1430413120952.109755783787.790722072648",
+                  "values": [
+                    "white",
+                    "black"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "flavour",
+              "type": "flavour",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1332070235665.1114296388427"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1430413120952.1033998558839.570276319251",
+                  "values": [
+                    "chocolate",
+                    "vanilla"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "weather",
+              "type": "weather",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1332070235665.1342463862996"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1430413120952.578696704023.1525291365051",
+                  "values": [
+                    "winter",
+                    "summer"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Slot.Validation.1332070235665.1047502819992.335261062784",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please tell me your favorite artist among alan walker, eminem, justin bieber or ariana grande."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1332070235665.1047502819992",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please tell me the name of your favorite artist."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1332070235665.1049695556749",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Great. {artist} . Now please answer these three questions to help me match you to an {artist} song. First, which color do you prefer, Black or White?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1332070235665.1114296388427",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Got it, Question two, Which ice cream flavour you like, Chocolate or vanilla ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1332070235665.1342463862996",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "okay. I like {flavour} too. Also, Which weather do you generally prefer, summer or winter ?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1430413120952.109755783787.790722072648",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please choose a color between black or white"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1430413120952.1033998558839.570276319251",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please choose between chocolate or vanilla. I don\u0027t like flavours other than these."
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1430413120952.578696704023.1525291365051",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please tell me either summer or winter"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "11"
+}
